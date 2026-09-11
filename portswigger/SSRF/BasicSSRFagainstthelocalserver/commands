@@ -1,0 +1,11 @@
+bueno primero vemos que no podemos acceder a admin asi como asi /admin, abrimos burp y en alguno de los inventarios damos a check stock e interceptamos con burp
+lo enviamos al repeater y entramos a 
+
+http://localhost/admin
+
+vemos en un lado que dice /admin/delete?username=carlos
+
+asi que hacemos eso mismo
+
+y listo
+

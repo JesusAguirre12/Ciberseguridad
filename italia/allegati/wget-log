@@ -1,0 +1,11 @@
+--2026-08-29 21:40:07--  https://training.olicyber.it/api/file/377f7d9c-9b8d-4f54-b32f-d52062858cd0/flag.txt?download=
+Resolviendo training.olicyber.it (training.olicyber.it)... 172.67.157.96, 104.21.89.84, 2606:4700:3037::ac43:9d60, ...
+Conectando con training.olicyber.it (training.olicyber.it)[172.67.157.96]:443... conectado.
+Petición HTTP enviada, esperando respuesta... 200 OK
+Longitud: 27 [application/octet-stream]
+Grabando a: «flag.txt?download=»
+
+flag.txt?download=                                           0%[                                                                                                                                        ]       0  --.-KB/s               flag.txt?download=                                         100%[=======================================================================================================================================>]      27  --.-KB/s    en 0s      
+
+2026-08-29 21:40:08 (17,8 MB/s) - «flag.txt?download=» guardado [27/27]
+

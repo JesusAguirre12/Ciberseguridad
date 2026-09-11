@@ -1,0 +1,12 @@
+primero hacemos 
+
+cat password.txt 
+
+y eso nos da 720b6ad346f84cd483c60c7464dd95d4 que es lo que tendremos que ingresar cuando ende.py nos de la contraseña
+
+python3 ende.py -d flag.txt.en
+
+ingresamos la contraseña y ya nos da la flag
+
+flag = 	picoCTF{4p0110_1n_7h3_h0us3_9c5f9bcf}
+

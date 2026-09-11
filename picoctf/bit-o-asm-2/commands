@@ -1,0 +1,17 @@
+primero hacemos cat al archio y analizamos linea por linea donde se asigna algo a eax y luego vemos que se asigna 
+
+<+0>:     endbr64 
+<+4>:     push   rbp
+<+5>:     mov    rbp,rsp
+<+8>:     mov    DWORD PTR [rbp-0x14],edi
+<+11>:    mov    QWORD PTR [rbp-0x20],rsi
+<+15>:    mov    DWORD PTR [rbp-0x4],0x9fe1a
+<+22>:    mov    eax,DWORD PTR [rbp-0x4]
+<+25>:    pop    rbp
+<+26>:    ret
+
+vemos que se le asigna 0x9fe1a a 4 bytes antes de rbp y luego copiamos en eax lo que esta desde 4 bytes antes de rbp
+
+por lo que el valor de eax es simplemente print(int("0x9fe1a",16))
+
+picoCTF{654874}

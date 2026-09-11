@@ -1,0 +1,4 @@
+la cookie es la flag encodeada como base64
+
+echo "cGljb0NURntjMDBrMWVfbTBuc3Rlcl9sMHZlc19jMDBraWVzX0M0MzBBRTIwfQ%3D%3D" | base64 -d
+picoCTF{c00k1e_m0nster_l0ves_c00kies_C430AE20}

@@ -1,0 +1,13 @@
+es algo sencillo 
+
+unicamente debemos usar gdb ./programa
+
+break *main+59
+
+run
+
+info registers eax
+
+y lissto
+
+picoCTF{307019}

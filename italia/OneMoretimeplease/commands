@@ -1,0 +1,31 @@
+attacker se usa para determinar que podria haber en los textos vemos que no es exacto porque hay varias incoherencias
+por lo que simplemente utilzamos el primer mensaje para determinar que podria haber ahi, y nos damos cuenta que con el texto corregido en italiano
+otra cosa es que los caracteres que realmente van nos damos cuenta que son en mayuscula por lo que asumimos que los mensajes estan en mauyscula y 
+reescribimos el primer mensaje asi
+
+qL CRNTTOSaSTnMA CHE STO UFILWZZAJKO SQMBzA INDISTjUoTIaILE
+IL CRITTOSISTEMA CHE STO UTILIZZANDO SEMBRA INDISTRUTTTIBLE
+
+chequear real.py
+
+y luego podremos decifrar los mensajes correctamente, o al menos decifrar completamente el que nos interesa pq podemos obtener la llave simplemente
+haciendo
+
+M1 es el primer mensaje decifrado
+C1 es el primer mensaje cifrado
+
+y la llave K es de la forma
+
+M1 ^ K = C1
+M1 ^ C1 = K
+
+por lo que sacamos la clave K y ya podemos desencriptar todos los mensajes
+
+Mx ^ K = Cx
+Cx ^ K = Mx
+...
+
+Mx es lo que queremos
+
+y nada correr attacker.py y revisarlo para entender mejor  
+y luego la flag se obtiene corriendo real.py

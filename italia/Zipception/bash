@@ -1,0 +1,106 @@
+1. Variables
+
+No se usan espacios alrededor del signo =. Para acceder a su valor, usa $.
+Bash
+
+# Declaración (sin espacios)
+nombre="Kali"
+puerto=8080
+
+# Uso de variables
+echo "Sistema: $nombre"
+echo "Puerto: ${puerto}"
+
+2. Estructuras de Control (Condicionales)
+
+Los corchetes [ ] (o [[ ]] para funcionalidades avanzadas) requieren espacios por dentro.
+
+Sintaxis if / elif / else:
+Bash
+
+if [ -f "archivo.txt" ]; then
+  echo "El archivo existe"
+elif [ -d "carpeta" ]; then
+  echo "Es un directorio"
+else
+  echo "No se encontró nada"
+fi
+
+Operadores de comparación comunes:
+
+    Archivos: -f (existe archivo), -d (existe directorio), -e (existe cualquier cosa).
+
+    Texto: = (igual), != (diferente), -z (está vacío).
+
+    Números: -eq (igual), -ne (diferente), -gt (mayor que), -lt (menor que).
+
+3. Ciclos (Loops)
+Ciclo for
+Bash
+
+# Iterar sobre una lista fija
+for user in admin root guest; do
+  echo "Usuario: $user"
+done
+
+# Iterar sobre un rango de números
+for i in {1..5}; do
+  echo "Número $i"
+done
+
+# Iterar sobre archivos del directorio
+for file in *.txt; do
+  echo "Archivo: $file"
+done
+
+Ciclo while
+Bash
+
+contador=1
+while [ $contador -le 5 ]; do
+  echo "Contador: $contador"
+  ((contador++))  # Operación aritmética
+done
+
+4. Funciones
+
+Se definen mediante nombre() y los parámetros recibidos se leen como $1, $2, etc.
+Bash
+
+saludar() {
+  local usuario="$1"  # 'local' limita la variable a la función
+  echo "Hola, $usuario!"
+}
+
+# Llamada a la función
+saludar "Jesús"
+
+5. Variables Especiales
+Variable	Significado
+$0	Nombre del script o ejecutable actual.
+$1, $2	Primer y segundo argumento pasados al script/función.
+$@	Todos los argumentos pasados como una lista.
+$#	Cantidad total de argumentos pasados.
+$?	Código de salida del último comando (0 = éxito, >0 = error).
+$$	PID (ID de proceso) de la shell actual.
+6. Manipulación de Cadenas (Expansión de Variables)
+Bash
+
+var="documento.tar.gz"
+
+echo "${var%.*}"     # Elimina el último sufijo -> documento.tar
+echo "${var%%.*}"    # Elimina todos los sufijos -> documento
+echo "${var#*.}"     # Elimina el primer prefijo -> tar.gz
+echo "${var/tar/zip}" # Reemplaza texto -> documento.zip.gz
+
+7. Redirección y Encadenamiento
+
+    > : Redirige la salida a un archivo (sobrescribe).
+
+    >> : Redirige la salida a un archivo (añade al final).
+
+    | (Pipe): Pasa la salida de un comando como entrada de otro.
+
+    && : Ejecuta el siguiente comando solo si el anterior tuvo éxito.
+
+    || : Ejecuta el siguiente comando solo si el anterior falló.

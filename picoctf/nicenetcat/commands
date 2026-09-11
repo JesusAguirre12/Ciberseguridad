@@ -1,0 +1,9 @@
+nc wily-courier.picoctf.net 58863
+
+python3 breaker.py 
+
+y le ingresas los numeros de el nc con un -22 al final pq si no se 
+
+y eso te da la flag
+
+flag = picoCTF{g00d_k1tty!_n1c3_k1tty!_d9476}

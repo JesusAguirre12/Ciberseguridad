@@ -1,0 +1,5 @@
+se nos pide hacer lo mismo de headers pero con Accept y application/xml, no voy a hacer el script pero recomiendo revisar el archivo de headers
+
+curl -X GET -H "Accept: application/xml" "http://web-04.challs.olicyber.it/users"
+
+

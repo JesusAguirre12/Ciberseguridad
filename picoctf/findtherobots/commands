@@ -1,0 +1,23 @@
+con robots se refiere en el servidor apache a robots.txt
+
+entonces vamos a 
+
+http://fickle-tempest.picoctf.net:49458
+
+en mi caso
+
+y vamos al recurso /robots.txt 
+
+por lo que ahi nos aparece un html medio extraño en mi caso 
+
+cc6b1.html
+
+el cual nos indica un recurso
+
+entrando a http://fickle-tempest.picoctf.net:49458/cc6b1.html
+
+esta la flag
+
+picoCTF{ca1cu1at1ng_Mach1n3s_cc6b1}
+
+

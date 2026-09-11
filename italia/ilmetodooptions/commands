@@ -1,0 +1,8 @@
+curl -i -X POST -H "X-Method: POST" "http://web-10.challs.olicyber.it/"
+
+lo que al revisar lo que nos da challenge nos damos cuenta que si no se especifica en el header X-Method un metodo que no sea uno de los que esta en allow
+toma por defecto GET, y entonces si o si tenemos que especificar en el header otra cosa
+
+y el -i es para que nos muestre las cabeceras
+
+para ver como es en python es en el archivo breaker.py los otros son intentos

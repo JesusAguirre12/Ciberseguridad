@@ -1,0 +1,22 @@
+primero comenzamos con que nos tenemos que registrar, nuestro objetivo es logearnos como admin
+
+user:ssssssss
+pass:ssssssss
+
+cuando verificamos la cookie vemos un base64 que al decodificarlo nos da algo como
+
+2026/09/05-1788633934-ssssssss
+
+asi que probamos cambiar ssssssss por admin
+
+printf '2026/09/05-1788633934-admin' | base64 -w0
+
+USAMOS -w0 OBLIGATORIAMENTE PORQUE BASE64 SIEMPRE AÑADE \n automaticamente, esto le dice "pa, no lo hagas"
+
+y esto nos da
+
+MjAyNi8wOS8wNS0xNzg4NjMzOTM0LWFkbWlu
+
+que al probarlo en la pagina nos devuelve la cookie sin problemas
+
+
