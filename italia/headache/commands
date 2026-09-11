@@ -1,0 +1,7 @@
+curl -I "http://headache.challs.olicyber.it/"
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Date: Sat, 05 Sep 2026 14:43:06 GMT
+Flag: flag{s0no_1nc4strato_nell_h3ader}
+Server: Apache/2.4.56 (Debian)
+X-Powered-By: PHP/8.0.30

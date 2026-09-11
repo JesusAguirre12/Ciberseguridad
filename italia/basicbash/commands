@@ -1,0 +1,52 @@
+Procedimiento y Obtención de Datos
+
+    Conexión:
+    Bash
+
+nc basicbash.challs.olicyber.it 38048
+
+Acceso a la primera carpeta en orden alfabético:
+Bash
+
+cd cartella
+
+Obtención del Dato 1 (Tamaño en bytes de .esempio):
+Bash
+
+ls -la
+
+    Resultado: 109 bytes (columna 5 de la salida).
+
+Obtención del Dato 2 (Contenido del archivo gatto):
+Bash
+
+cat gatto
+
+    Resultado: ffeaf8a1a4a9a9ef
+
+Obtención del Dato 3 (Salida del ejecutable eseguibile):
+Bash
+
+./eseguibile
+
+    Resultado: banananana
+
+Obtención del Dato 4 (Nombre del archivo que contiene "olicyber"):
+Bash
+
+    grep -r "olicyber" .
+
+        Salida: ./sottocartella/9e8b1fd8f180b627:olicybercamp2025
+
+        Resultado: 9e8b1fd8f180b627
+
+Formato de la Flag Final
+
+Estructura: flag{<bytes_esempio>_<cat_gatto>_<output_eseguibile>_<archivo_olicyber>}
+
+Flag resultante:
+Plaintext
+
+flag{109_ffeaf8a1a4a9a9ef_banananana_9e8b1fd8f180b627}
+
+

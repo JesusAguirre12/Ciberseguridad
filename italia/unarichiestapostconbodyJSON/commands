@@ -1,0 +1,5 @@
+aca vamos a enviar la data como json es lo mismo pero tenemos que usar el header "Content-Type: application/json" y la data pasarla en formato json
+
+ curl -X POST -H "Content-Type: application/json" -d '{"username": "admin", "password": "admin"}' "http://web-09.challs.olicyber.it/login"
+
+

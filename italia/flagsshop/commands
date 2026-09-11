@@ -1,0 +1,5 @@
+simplemente vemos que 100 no compra mil asi que interceptamos la peticion con burp y modificamos lo que dice costo para la ultima bandera de mil a algo
+barato y simplemente asi resolvemos el problema
+
+flag{gr4zi3_p3r_l_4cqu1st0}
+

@@ -1,0 +1,5 @@
+simplemente se nos pide hacer el get de una cookie llamada password y valor admin
+
+curl -X GET --cookie "password=admin" "http://web-05.challs.olicyber.it/flag"
+
+para ver como se hace en python revisar el archivo

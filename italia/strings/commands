@@ -1,0 +1,3 @@
+strings sw-04 | grep -E "flag{.*}"
+
+simplemente se nos pide usar strings

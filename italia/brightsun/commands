@@ -1,0 +1,20 @@
+primero probamos con zsteg y no encontramos nada
+
+probamos ahora con exiftool no hay comentarios luego con binwalk y vemos tres zlib
+
+los extraemos con binwalk -e BrightSon.png
+
+y en el archivo 40 que va a haber en la carpeta que se creo con lo extraido
+
+nostros cuando tenemos un hex SIEMPRE conviene ver si hay algun tipo de magic bytes y aca esta ffd9 por el final y si subimos despues de la basura
+ascii que hay al principio vemos ffd8
+
+aunque esto es un ejercicio util realmente no obtenemos nada, asi que olvidense de lo anterior pero es bueno saberlo
+
+lo que hay que hacer es con stegsolve 
+
+que si lo tenes instalado de llama con java -jar ~/stegsolve.jar
+
+vas moviendo las flechitas hasta green plane 1 
+
+flag{h1dd3n_by_7h3_5un}

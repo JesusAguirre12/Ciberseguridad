@@ -1,0 +1,5 @@
+para hacer el post enviando la data usamos el parametro -d que indica data y queda asi
+
+curl -X POST -d "username=admin&password=admin" "http://web-08.challs.olicyber.it/login"
+
+para revisar como es en python mirar el archivo

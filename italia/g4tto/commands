@@ -1,0 +1,9 @@
+aca simplemente acordemonos que existen objetos damos a exportar html y vemos una imagen Gatto.jpeg y al abrirla vemos la flag
+
+otra manera, como lo hice yo pq me olvide que se pueden exportar objetos como bld
+
+es hacer esto
+tshark -r captura.pcapng -Y 'http && frame matches "(?i)gatto"' -V
+y luego darte cuenta que habia un Gatto.jpeg (gracias al enunciado intuia que algo se llamaba gatto)
+
+y la flag{C4ts4r3Cut3}
