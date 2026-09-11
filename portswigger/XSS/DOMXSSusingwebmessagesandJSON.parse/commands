@@ -1,0 +1,50 @@
+primero que nada analizamos esto
+
+ window.addEventListener('message', function(e) {
+                            var iframe = document.createElement('iframe'), ACMEplayer = {element: iframe}, d;
+                            document.body.appendChild(iframe);
+                            try {
+                                d = JSON.parse(e.data);
+                            } catch(e) {
+                                return;
+                            }
+                            switch(d.type) {
+                                case "page-load":
+                                    ACMEplayer.element.scrollIntoView();
+                                    break;
+                                case "load-channel":
+                                    ACMEplayer.element.src = d.url;
+                                    break;
+                                case "player-height-changed":
+                                    ACMEplayer.element.style.width = d.width + "px";
+                                    ACMEplayer.element.style.height = d.height + "px";
+                                    break;
+                            }
+                        }, false);
+
+
+Fuente no confiable (Source): El evento window.addEventListener('message', function(e) { ... }). Al no validar quién envía el mensaje (e.origin), la página acepta datos de cualquier origen en internet.
+
+Sumidero peligroso (Sink): La asignación ACMEplayer.element.src = d.url. El atributo .src de un <iframe> ejecuta código si recibe el protocolo javascript:.
+
+El puente (JSON.parse): El código espera una cadena de texto en formato JSON. Como JSON.parse(e.data) procesa la entrada sin limpiar las URLs o validar protocolos, deja pasar la carga maliciosa intacta hacia el sumidero.
+
+<iframe src=https://0a39001e038705228219e22a006d00aa.web-security-academy.net/ onload='this.contentWindow.postMessage("{\"type\":\"load-channel\",\"url\":\"javascript:print()\"}","*")'>
+
+    Paso 1: Abrir la ventana en segundo plano (<iframe src=...)
+    El atacante incrusta la página vulnerable dentro de su propia web maliciosa mediante un <iframe> invisible o cargado en segundo plano.
+
+    Paso 2: Esperar a que la víctima abra la puerta (onload=...)
+    El evento onload garantiza que la carta no se enviará hasta que la página víctima termine de cargarse por completo y su receptor de mensajes (addEventListener) esté escuchando.
+
+    Paso 3: Enviar la carta trampa (postMessage(...))
+    El atacante usa postMessage para mandar una orden en formato JSON. El segundo argumento "*" significa "mándalo sin importar quién sea el receptor".
+    La carta dice: {"type":"load-channel","url":"javascript:print()"}.
+
+    Paso 4: El asistente cae en el engaño (JSON.parse y switch)
+    La página víctima recibe la carta, la convierte en un objeto con JSON.parse y revisa el tipo de orden. Como el type es "load-channel", ejecuta la lógica del case:
+    JavaScript
+
+ACMEplayer.element.src = "javascript:print()";
+
+

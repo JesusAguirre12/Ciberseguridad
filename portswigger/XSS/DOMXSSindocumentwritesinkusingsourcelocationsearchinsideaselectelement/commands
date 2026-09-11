@@ -1,0 +1,16 @@
+okey cuando vemos un producto hay una cosa que es storeId
+
+var stores = ["London","Paris","Milan"];
+var store = (new URLSearchParams(window.location.search)).get('storeId');
+document.write('<select name="storeId">');
+
+lo cual podemos aprovechar para inyectar cositas ahi, esto lo vemos cuando inspeccionamos el codigo, y si probamos poner algo random en storeId, se modifica el option
+https://algoraro.web-security-academy.net/product?productId=2&storeId=asdasdasdasda 
+
+y el cosito de opciones en donde vos pones check stock cambia a lo que vos pones asi que probamos poner algo de este estilo y anda
+
+/product?productId=2&storeId=<script>alert(1)</script>
+
+y esto da el alert aunque la solucion oficial lo hace asi
+
+product?productId=1&storeId="></select><img%20src=1%20onerror=alert(1)>

