@@ -1,0 +1,15 @@
+la vulnerabilidad esta en esta linea
+
+$user_input == substr(md5($user_input), 0, 24)
+
+El operador de comparación débil (==) en PHP es vulnerable porque realiza una conversión implícita de tipos 
+(type juggling o type coercion) antes de comparar dos valores
+
+entonces aca
+
+la vulnerabilidad ocurre cuando usas ==, si comparamos dos cadenas que empiecen por 0e las interpreta como numeros flotantes en 0*10^x 
+haciendo que de 0 por lo que basta con que el hash empiece por 0e tambien, encontramos
+
+0e2977606
+
+asi que ahora ingresamos en input ese valor y obtenemos la flag
