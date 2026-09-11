@@ -1,0 +1,3 @@
+simplemente hacemos un get a 
+curl -X GET "http://roller.challs.olicyber.it/get_flag.php" 
+flag{r1ck_4st1ey_c14ssic_m3m3}
