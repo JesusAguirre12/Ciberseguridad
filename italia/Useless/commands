@@ -1,5 +1,0 @@
-strings captura.pcapng | grep "flag"                                                  
-tambien se puede ver con
-capinfos -C captura.pcapng
-
-flag{4lw4y5_ch3ck_th3_c0mm3nt5}

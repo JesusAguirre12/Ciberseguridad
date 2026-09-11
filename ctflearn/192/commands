@@ -1,0 +1,7 @@
+echo "Q1RGe0ZsYWdneVdhZ2d5UmFnZ3l9" | base64 -d 
+
+
+Nos damos cuenta porque la traduccion del enunciado es 2 a la 6,  2 to the 6 = 64, y juntando todo da Base64
+
+
+Flag = CTF{FlaggyWaggyRaggy}

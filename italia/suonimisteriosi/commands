@@ -1,8 +1,0 @@
-primero que nada hay que notar que es codigo morse cuando abrimos en un visualizador hay solo picos o espacios en blanco y unos mas largos que otros
-aparentemente varian entre 2 longitudes tanto de espacio, como de separacion
-
-asi que podemos decifrar el siguiente codigo morse analizando esto
-
-.--./.-./../..././-./-.-./---/.-../../-././-./.../../-./.-/../-./-.-./../..-/.../---/.-..
-
-obtenemos la flag flag{prisencolinensinainciusol}

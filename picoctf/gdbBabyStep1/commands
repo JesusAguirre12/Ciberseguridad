@@ -1,0 +1,7 @@
+es sencillo la flag es
+picoCTF{549698}
+
+en el main no hay ningun call y lo unico que es distinto es que es 
+operacion origen destino
+
+al hacer objdump -d al archivo

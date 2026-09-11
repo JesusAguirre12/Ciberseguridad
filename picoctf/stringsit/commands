@@ -1,0 +1,3 @@
+strings strings | grep "pico"
+
+flag = picoCTF{5tRIng5_1T_47948C73}

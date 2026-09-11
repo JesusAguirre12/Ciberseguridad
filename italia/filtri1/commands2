@@ -1,5 +1,0 @@
-aca lo que hacemos es colocar en wireshark 
-
-dns && ip.addr == 192.168.100.3
-
-y buscamos la flag ahi

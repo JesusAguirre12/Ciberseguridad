@@ -1,0 +1,12 @@
+okey claramente aqui tenemos que probar cual cookie nos da la flag seteandola en la pagina
+http://wily-courier.picoctf.net:50570/check
+
+por lo que debemos usar burp intruder
+
+tocamos ctrl i ataque de sniper seleccionamos numbers
+
+y lo mandamos ahora en grep match buscamos y agregamos picoCTF
+
+y ahi esta en la 18
+
+picoCTF{3v3ry1_l0v3s_c00k135_a4dadb49}

@@ -1,0 +1,22 @@
+esta un poco mas oculta pero igual
+
+ejecutando lo siguiente obtenemos la pass
+
+python3                                              
+
+>>> chr(0x64) + chr(0x65) + chr(0x37) + chr(0x36)
+
+eso nos devuelve
+
+'de76'
+
+lo cual es la pass
+lo de arriba que ingresamos no es nada nuevo, es lo mismo del codigo
+
+>>> quit
+                                                                                                                                                                                                                                        
+python3 level2.py 
+
+ingresas la contraseña y listo
+
+picoCTF{tr45h_51ng1ng_489dea9a}

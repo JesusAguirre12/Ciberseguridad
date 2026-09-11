@@ -1,6 +1,0 @@
-import gzip
-
-hex_data = "1f8b0800710360620003edd1410ac2301085e1ac3d45bc80cc34895d2b788e1084ba110b698416e9dd0d821b115d1511fe6ff30666f398e9cee9b42963310b926aebfd23abd714f162d437ae4e1aa435a2daa8182b4b967aba0e25656b4deefb8f47f8b6ff535dfdff6d3f1517e2616cf3ee58542e5187e85298d6f3ead7fd0000000000000000000000000000efdd0148a5cfb900280000"
-compressed_bytes = bytes.fromhex(hex_data)
-decompressed_data = gzip.decompress(compressed_bytes)
-print(decompressed_data.decode('utf-8'))

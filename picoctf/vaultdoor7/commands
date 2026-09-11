@@ -1,0 +1,3 @@
+la cosa aca es darse cuenta que en el int no intersecan los bloques de bytes que ponemos por lo que podemos irlos descartando de la misma manera que entraron, revisar decoder
+
+picoctf{A_b1t_0f_b1t_sh1fTiNg_fb12546a4d}

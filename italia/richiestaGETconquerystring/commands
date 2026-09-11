@@ -1,9 +1,0 @@
-podemos hacerlo asi
-
-curl -X GET "http://web-02.challs.olicyber.it/server-records?id=flag"
-
-ponemos un ? en la url para especificar parametros y si son varios vamos colocandolos p ej
-
-?id=flag&user=admin
-
-en el archivo de python esta como hacerlo con request

@@ -1,9 +1,0 @@
-es un gif corrupto y tiene 7 bytes extra al inicio entonces los sacamos con
-dd if=archivo_roto.gif of=archivo_limpio.gif bs=1 skip=7
-
-con truncate -s -5 archivo
-eliminas los ultimos 5 bytes, en otro ejemplo en donde se requiera lo anoto para tenerlo en cuenta
-
-despues con stegsolve vemos el frame de la flag y gg
-
-flag{Wh4t_th3_fl4g}

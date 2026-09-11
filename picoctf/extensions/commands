@@ -1,0 +1,10 @@
+file flag.txt 
+
+dice txt pero es un png, reformateamos: 
+
+cat flag.txt > img.png
+
+y al revisar
+
+picoCTF{now_you_know_about_extensions}
+

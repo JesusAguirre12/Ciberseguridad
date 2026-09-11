@@ -1,7 +1,0 @@
-ponemos en filtros tcp y abrimos el primer cosito y damos a seguir flujo tcp y ahi esta la flag
-
-para hacerlo con tsharl filtramos por tcp y luego imprimimos el payload en texto plano
-
-tshark -r ar.pcap -Y "tcp" -T fields -e tcp.payload | xxd -r -p
-flag{F0lloW_7h3_Wh1t3_5tr3aM_4l1c3}
-

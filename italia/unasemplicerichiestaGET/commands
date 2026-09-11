@@ -1,3 +1,0 @@
-curl -X GET "http://web-01.challs.olicyber.it/"
-literal el desafio es hacer un get
-aunque tambien se puede hacer con requests fijarse en el archivo de python

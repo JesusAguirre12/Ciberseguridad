@@ -1,0 +1,19 @@
+Primero  lo primero este desafio es re easy pero hay que usar una herramienta llamada cup para generar las contraseñas 
+
+que es cupp 
+
+hacemos
+
+ python3 cupp.py -i
+
+e ingresas los datos de alice
+
+una vez hecho esto 
+
+ya solamente haces 
+
+python3 check_password.py
+
+y obtenemos la flag 
+
+flag = picoCTF{Aj_15901990}

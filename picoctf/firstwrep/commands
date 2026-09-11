@@ -1,0 +1,5 @@
+solo haces
+
+cat file | grep "pico"
+
+flag = picoCTF{grep_is_good_to_find_things_29f42460}

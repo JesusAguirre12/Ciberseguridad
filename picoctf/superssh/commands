@@ -1,0 +1,9 @@
+solamente 
+
+ssh -p 64308 ctf-player@titan.picoctf.net 
+
+ojo con el puerto 
+
+pones yes e ingresas tu password asignada
+
+picoCTF{s3cur3_c0nn3ct10n_07a987ac}

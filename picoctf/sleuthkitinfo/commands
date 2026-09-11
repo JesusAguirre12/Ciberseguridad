@@ -1,0 +1,13 @@
+gzip -d disk.img.gz
+
+ahora no vemos nada en particular, el enunciado nos dice que corramos mmls 
+
+hacemos eso mismo y nos da info, despues con nc saturn.picoctf.net 58005 nos pide cual es el tamaño de la particion de linux en el disco, el tamaño es claramente desp de 
+
+mmls disk.img 
+
+202752 
+
+aunque con fdisk -l disk.img tambien nos lo da y la flag es
+
+picoCTF{mm15_f7w!}

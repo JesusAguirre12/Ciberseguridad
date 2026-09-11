@@ -1,3 +1,0 @@
-la conseguimos asi de facil
-
-tshark -r archivo.pcapng -Y 'frame contains "flag"' -V

@@ -1,0 +1,37 @@
+primero hacemos un fls para ver los archivos que tenemos de lectura
+sabemos que la particion de linux es de 2048 por el mmls 
+
+asi que 
+
+fls -r -o 2048 disk.flag.img
+
+y la lista de readables son 
+
+12 13 15 16 17 19 20 21 22 23 14 24
+
+hacemos un archivo flag finder 
+
+ejecutamos el flag finder y no encontro nada asi que esta en orphan files
+
+como lo se
+lo presiento
+
+nah mentira es que es lo unico que no he revisado
+
+fls -o 2048 disk.flag.img 25585
+
+no hay un pingo a ver no se donde esta
+
+hay otras particiones y resulta que la 360448 tiene cositas
+
+fls -r -o 0000360448 disk.flag.img | grep "flag" 
+
+hay flag.txt y flag.uni.txt 
+
+icat -o 0000360448 disk.flag.img 2371
+
+y gg 
+
+picoCTF{by73_5urf3r_2f22df38}
+
+

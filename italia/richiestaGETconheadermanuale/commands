@@ -1,5 +1,0 @@
-hacemos es get especificando headers de la siguiente manera 
-
-curl -X GET -H "X-Password: admin" "http://web-03.challs.olicyber.it/flag"
-
-y para ver como hacerlo en python revisar el archivo
