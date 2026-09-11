@@ -1,0 +1,115 @@
+import base64
+import hashlib
+from Cryptodome.Cipher import AES, ChaCha20_Poly1305
+from Cryptodome.Random import get_random_bytes
+from Cryptodome.Util.Padding import pad, unpad
+
+# --- FUNCIÓN AUXILIAR DE CLAVE ---
+def derivar_clave_256(passphrase: str) -> bytes:
+    """Genera una clave estandarizada de 32 bytes usando SHA-256."""
+    return hashlib.sha256(passphrase.encode('utf-8')).digest()
+
+
+# ==========================================
+# GESTIÓN DE AES-GCM
+# ==========================================
+def cifrar_aes_gcm(texto: str, passphrase: str) -> str:
+    key = derivar_clave_256(passphrase)
+    nonce = get_random_bytes(12)  # Tamaño estándar para GCM
+    
+    cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
+    ciphertext, tag = cipher.encrypt_and_digest(texto.encode('utf-8'))
+    
+    # Empaquetamos todo junto para el transporte
+    paquete = nonce + tag + ciphertext
+    return base64.b64encode(paquete).decode('utf-8')
+
+def descifrar_aes_gcm(texto_cifrado_b64: str, passphrase: str) -> str:
+    key = derivar_clave_256(passphrase)
+    paquete = base64.b64decode(texto_cifrado_b64.encode('utf-8'))
+    
+    # Extraemos basándonos en tamaños fijos (nonce=12B, tag=16B)
+    nonce = paquete[:12]
+    tag = paquete[12:28]
+    ciphertext = paquete[28:]
+    
+    cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
+    texto_plano = cipher.decrypt_and_verify(ciphertext, tag)
+    return texto_plano.decode('utf-8')
+
+
+# ==========================================
+# GESTIÓN DE CHACHA20-POLY1305
+# ==========================================
+def cifrar_chacha20_poly1305(texto: str, passphrase: str) -> str:
+    key = derivar_clave_256(passphrase)
+    nonce = get_random_bytes(12)  # Tamaño estándar según RFC 7539
+    
+    cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
+    ciphertext, tag = cipher.encrypt_and_digest(texto.encode('utf-8'))
+    
+    paquete = nonce + tag + ciphertext
+    return base64.b64encode(paquete).decode('utf-8')
+
+def descifrar_chacha20_poly1305(texto_cifrado_b64: str, passphrase: str) -> str:
+    key = derivar_clave_256(passphrase)
+    paquete = base64.b64decode(texto_cifrado_b64.encode('utf-8'))
+    
+    nonce = paquete[:12]
+    tag = paquete[12:28]
+    ciphertext = paquete[28:]
+    
+    cipher = ChaCha20_Poly1305.new(key=key, nonce=nonce)
+    texto_plano = cipher.decrypt_and_verify(ciphertext, tag)
+    return texto_plano.decode('utf-8')
+
+
+# ==========================================
+# GESTIÓN DE AES-CBC
+# ==========================================
+def cifrar_aes_cbc(texto: str, passphrase: str) -> str:
+    key = derivar_clave_256(passphrase)
+    cipher = AES.new(key, AES.MODE_CBC)
+    iv = cipher.iv  # AES-CBC autogenera un IV de 16 bytes
+    
+    # CBC requiere padding obligatorio
+    texto_con_padding = pad(texto.encode('utf-8'), AES.block_size)
+    ciphertext = cipher.encrypt(texto_con_padding)
+    
+    paquete = iv + ciphertext
+    return base64.b64encode(paquete).decode('utf-8')
+
+def descifrar_aes_cbc(texto_cifrado_b64: str, passphrase: str) -> str:
+    key = derivar_clave_256(passphrase)
+    paquete = base64.b64decode(texto_cifrado_b64.encode('utf-8'))
+    
+    iv = paquete[:16]  # El IV en AES siempre ocupa 16 bytes
+    ciphertext = paquete[16:]
+    
+    cipher = AES.new(key, AES.MODE_CBC, iv=iv)
+    texto_con_padding = cipher.decrypt(ciphertext)
+    
+    # Quitamos el padding al recuperar el texto
+    texto_plano = unpad(texto_con_padding, AES.block_size)
+    return texto_plano.decode('utf-8')
+
+
+# --- DEMOSTRACIÓN INDEPENDIENTE ---
+if __name__ == "__main__":
+    clave = "ContrasenaDePrueba"
+    mensaje = "Mensaje secreto de prueba individual"
+
+    # Probar GCM
+    gcm_enc = cifrar_aes_gcm(mensaje, clave)
+    print(f"GCM Cifrado: {gcm_enc}")
+    print(f"GCM Descifrado: {descifrar_aes_gcm(gcm_enc, clave)}\n")
+
+    # Probar ChaCha20
+    chacha_enc = cifrar_chacha20_poly1305(mensaje, clave)
+    print(f"ChaCha20 Cifrado: {chacha_enc}")
+    print(f"ChaCha20 Descifrado: {descifrar_chacha20_poly1305(chacha_enc, clave)}\n")
+
+    # Probar CBC
+    cbc_enc = cifrar_aes_cbc(mensaje, clave)
+    print(f"CBC Cifrado: {cbc_enc}")
+    print(f"CBC Descifrado: {descifrar_aes_cbc(cbc_enc, clave)}")

