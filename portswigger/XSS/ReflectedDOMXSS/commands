@@ -1,8 +1,0 @@
-primero que nada notamos que la expresion que mandamos se evalua con un eval q podemos ver 
-
-ponemos esto " y vemos que se nos esta cancelando y la idea es cerrar lo anterior, asi que probablemente este siendo cancelada por un \ 
-
-asi que ponemos esto \" y oh sorpresa desaparece todo, ocurrio un error supongo asi que si esta cerrando
-asi que ahora mandamos \"-alert(1)}// que hace hace la consulta alert y el // comenta todo lo que venga, terminando asi la consulta e imprimiendo un alert
-
-

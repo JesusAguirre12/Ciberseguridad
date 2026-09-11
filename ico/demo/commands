@@ -1,0 +1,167 @@
+flag 1 es haciendo un grep ni me acuerdo cual era
+
+grep -rniE "ICO{.*}"
+
+ICO{just_a_sanity_check_flag_for_you}
+
+
+
+
+
+
+
+flag 2 wireshark sigue el flujo empezando desde cualquier lado y dice caracter en la posicion x de flag y asi
+
+ICO{network_flag}
+
+
+
+
+
+
+
+flag 3
+el constructor interno recibe los parámetros como:
+
+Poly1305_MAC(r, s, data)
+
+entonces la idea sería la siguiente.
+
+Poly1305 para un único bloque de mensaje se puede escribir de forma simplificada como:
+
+acc = (m * r) mod p
+tag = (acc + s) mod 2^128
+
+donde:
+
+m = mensaje convertido a entero
+r = clave secreta
+s = segundo secreto
+p = 2^130 - 5
+
+En el reto:
+
+m = MD5(data)
+
+y MD5 siempre mide 16 bytes.
+
+Por eso el mensaje completo que entra a Poly1305 es un único bloque de 16 bytes.
+
+La observación importante es que el token contiene:
+
+nonce || data || tag
+
+y los primeros 16 bytes del token son exactamente el valor que se pasa como segundo parámetro a Poly1305_MAC.
+
+Es decir:
+
+nonce = s
+
+Por eso no hay que adivinar s.
+
+El propio token te lo entrega.
+
+Cuando haces:
+
+decoded = b64decode(token)
+
+nonce = decoded[:16]
+
+ya conoces s.
+
+entonces tienes:
+
+tag = (m*r mod p + s) mod 2^128
+
+como conoces:
+
+tag
+m
+s
+
+la única incógnita es:
+
+r
+
+La idea sería despejar:
+
+m*r mod p = tag - s
+
+y luego multiplicar por el inverso modular de m:
+
+r = (tag - s) * m^-1 mod p
+
+Sin embargo
+
+El tag visible tiene sólo 128 bits:
+
+tag mod 2^128
+
+pero internamente el acumulador estaba módulo:
+
+p = 2^130 - 5
+
+Por eso no sabemos exactamente cuál era el valor interno.
+
+Puede ser:
+
+tag
+tag + 2^128
+tag + 2*2^128
+tag + 3*2^128
+
+y por eso se prueban varios valores posibles de acarreo:
+
+k = 0,1,2,3
+
+y se verifica cuál produce un r correcto.
+
+
+solo ejecutando el codigo de python breaker con las cosas correspondientes
+
+ICO{crypto_flag_3266f0b209389f693585}
+
+
+
+
+
+
+
+flag 4 
+
+veamos que el procedimiento es el mismo que el de flag 3 pero tenemos que obtener el nombre porque la publicacion ya la tenemos 
+
+
+ah no, miremos una cosa def create_note(user_id, name, desc, password_base = os.urandom(8)):
+
+pasword_base es la misma para todos 
+
+
+Si creamos una nota propia conocemos
+
+    name
+
+    desc
+
+    La contraseña generada (password)
+
+    note_id
+
+Con eso se puede calcular el valor compartido P (el password_base) dadp a que realmente es constante para todas las notas del proceso.
+
+f(name) = pad(name.encode(), 8)[:8]
+
+P = password xor f(name) xor MD5(desc)
+
+desc es la descripcion de la nota 
+
+entonces saquemos p con una nota conocida 
+
+al sacar p nosotros cuando el ejemplo de la flag4 crea una nota tenemos su descripcion y tenemos el nombre de la nota por lo que al sacar p 
+
+obtenemos acceso a la contraseña simplemente recreandola con los datos correspondientes del nombre, desc y p
+
+asi que ejecuta el script de python y obtienes el resultado
+
+
+ICO{web_flag_d9c8a1b2e5f4a7c8e9b}

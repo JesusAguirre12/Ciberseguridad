@@ -1,7 +1,0 @@
-lo que hace aca es que usa un innerhtml el cual cambia el contenido html de un div por lo que aprovechando lo de las imagenes podemos hacer
-
-<img src=1 onerror=alert(11)>
-
-y resolver el desafio
-
-

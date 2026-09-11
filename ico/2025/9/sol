@@ -1,0 +1,38 @@
+Network Planning Scenario
+
+You are tasked with planning the network for your company, which has 3 departments on 3 different floors (8th, 18th, and 19th) of a building.
+
+    The accounting department has 10 employees.
+    The sales department has 12 employees.
+    The operations department has 200 employees.
+
+The accounting and sales employees require a networked desktop to perform their daily work. These two departments also have a network printer each.
+
+The operations department works in shifts and utilizes 10 workstations. There are plans to double the number of workstations in the department.
+
+Your company also has:
+
+    A web server for public access.
+    A file document server for internal file sharing.
+
+Network Configuration
+
+You have decided to use the 192.168.x.x private address for the internal networks.
+What is the technology that needs to be enabled on your company router to allow this decision?
+
+Submit your flag in the format of: {XXX}. Your submission must be in all CAPS. Enter the acronym of the technology.
+
+
+Tipos de NAT (Para tus apuntes)
+
+    NAT Estático: Asocia una IP privada a una IP pública fija. Se usa para servidores internos que deben ser vistos desde Internet (como el servidor web del ejercicio).
+
+    NAT Dinámico: Usa un grupo (pool) de IPs públicas y las va prestando a las IPs privadas a medida que las necesitan.
+
+    PAT (Port Address Translation): También llamado NAT con sobrecarga. Permite que muchos dispositivos internos salgan a Internet usando una sola IP pública, diferenciándolos por "puertos".
+
+¿Por qué {NAT} es la flag?
+
+La respuesta es {NAT} porque el enunciado pregunta por la tecnología general (Network Address Translation) que permite la decisión de usar el direccionamiento privado 192.168.x.x dentro de la empresa. PAT y las demás son solo variantes o formas de aplicar esta misma tecnología base.
+
+

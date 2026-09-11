@@ -1,0 +1,5 @@
+como no se puede hacer el ataque de reutilizacion de nonce teniendo el texto plano la verdad es que la clave podria ser cualquiera de los textos planos y no hay una propiedad matematica fija que se pueda aplicar 
+
+Ademas sabiendo el texto cifrado el nonce y el texto plano no basta para saber la key asi que puede ser cualquiera del los 3 por lo que es la D
+
+que no se puede determinar nada mas 

@@ -1,7 +1,0 @@
-primero veamos la imagen y a simple vista no tiene nada
-
-strings garden.jpg | grep -ioE "picoCTF{.*}"
-
-ejecutando el comando de arriba obtenemos: y eso fue lo primero que probe lol
-
-picoCTF{more_than_m33ts_the_3y339140129}

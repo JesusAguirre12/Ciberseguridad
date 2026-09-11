@@ -1,5 +1,0 @@
-la cosa es darse cuenta que el otp se manda con un post request probar bruteforce es muy lento, asi que al probar eliminarlo, el post espera un body y al no recibirlo se toma a la peticion como valida
-hay que tener cuidado con no borrar ninguna linea demas pq si no el post es invalido y no obtendremos respuesta alguna por lo que oliminamos el otp=... pero mantenemos la linea 
-
-picoCTF{#0TP_Bypvss_SuCc3$S_b3fa4f1a}
-

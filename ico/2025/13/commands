@@ -1,0 +1,35 @@
+You are tasked with planning the network for your company, which has 3 departments on 3 different floors (8th, 18th, and 19th) of a building.
+
+    Accounting department: 10 employees
+    Sales department: 12 employees
+    Operations department: 200 employees
+
+Network Requirements:
+
+    The accounting and sales employees require a networked desktop.
+    Both departments have a network printer.
+    The operations department works in shifts with 10 workstations, with plans to double the number.
+    The company has a web server for public access and a file document server for internal file sharing.
+
+CIDR Calculation
+
+Using this scenario, you decide to assign each department a separate network ID:
+
+    192.168.1.0
+    192.168.2.0
+    192.168.3.0
+What is the CIDR value for each of the networks?
+
+Submit your flag in the format of: {xxx}, where xxx is a number.
+
+analizando esto sabemos que los primeros 3 x.x.x estan completamente ocupados y tenemos el ultimo libre
+
+por que? porque la red tiene que distinguir de que piso es cual y no podemos hacer mezcladera por lo que estan fijos, por ende los 0 que quedan al final estan completamente libres
+
+es decir tenemos exactamente 24 bits ocupados
+
+11111111 11111111 11111111 00000000
+
+la cantidad de 1 es lo que sabemos que estan ocupados, bien yo se que los numeros binarios no corresponden a nada de ahi pero es para poder sumar correctamente los bits en uso
+
+que son 24 y esa es la respuesta

@@ -1,0 +1,13 @@
+okey la cosa aqui es que esta claramente obfuscado el codigo revisandolo encontramos que la pass se tiene que igualar con
+un texto base64 que encontramos despues de rato buscando
+echo "YVl4bXNSdCpjdzRBbDNoejBpR0N4JCo0JEdzemJkaUkwJnZMJnMmc1pTUXVyYWYqQVM=" | base64 -d           
+aYxmsRt*cw4Al3hz0iGCx$*4$GszbdiI0&vL&s&sZSQuraf*AS
+
+y el enunciado nos dice que dada la pass correcta el programa devuelve la flag
+y el programa nos devuelve
+
+60341cfbed0ca94843037fe75ac599e6
+
+asi que asumo que la flag es eso en brackets
+
+{60341cfbed0ca94843037fe75ac599e6}

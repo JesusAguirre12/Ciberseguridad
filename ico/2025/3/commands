@@ -1,0 +1,8 @@
+al principio confunde porque el base64 no nos da nada y los xor no tienen efecto, por lo que nos pregunamos y si en realidad se le aplica al base64 y luego al normal
+
+probamos con cifrado de vigeneere con la palabra international y obtenemos
+
+
+Hide and seek is fun ! Here's the flag : {C@m0|¦l@ge}
+
+y esa es la flag

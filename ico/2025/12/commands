@@ -1,0 +1,7 @@
+usamos de crypto aes.MODE_EAX
+
+y creamos un cipher con la key y el nonce 
+ahora desencriptamos el texto cifrado y obtenemos 
+
+b'{I_like_play_CTF!}'
+7b495f6c696b655f706c61795f435446217d

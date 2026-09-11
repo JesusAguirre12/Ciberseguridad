@@ -1,0 +1,42 @@
+
+def jsdfjhsd (IlI11lIIl1 ):
+    return IlI11lIIl1 .encode ('ascii')
+def iuruyutyo (IllII1lII1 ):
+    return gzip .compress (IllII1lII1 )
+def ncjvhdfu (I1llI1I1II ):
+    return I1llI1I1II .decode ('ascii')
+def xjchiureuri (I1l111II11 ):
+    return base64 .b64encode (I1l111II11 )
+def zasdiiwe (Il1I1lI1II ):
+    IlIII111I1 ="x + 2 - 2 + 32 - 64 + 128 + 256"
+    l1I1IlI111 =secrets .choice (string .ascii_letters )
+    eval (IlIII111I1 )
+    return IlIII111I1 ,l1I1IlI111 
+def resdfkjsdf (II1I1II1II ):
+    Il1Il1ll1I =jsdfjhsd (II1I1II1II )
+    lI11Il11l1 =xjchiureuri (Il1Il1ll1I )
+    Il1Il11lII =ncjvhdfu (lI11Il11l1 )
+    for II1ll1II11 in range (32 ):
+        Il1Il11lII +=zasdiiwe (II1ll1II11 )[1 ]
+    Il1Il11lII =jsdfjhsd (Il1Il11lII )
+    return iuruyutyo (Il1Il11lII )
+def weusfdiufs (I1lII1l1lI ):
+    llII11I1I1 =open ('output.txt','wb')
+    llII11I1I1 .write (I1lII1l1lI )
+    llII11I1I1 .close ()
+def ereusodufyas():
+    l1lI1lI11I =open ('somefile','rb')
+    l1IIl11II1 = l1lI1lI11I.read()
+    Illl11II11 = bytearray()
+    for i in range(0, len(l1IIl11II1), 32):
+        llI1II1ll1 = l1IIl11II1[i:i+16]
+        I1l111I11l = l1IIl11II1[i+16:i+32]
+        if len(llI1II1ll1) < 16:
+            llI1II1ll1 += b' ' * (16 - len(llI1II1ll1))     
+        if len(I1l111I11l) < 16:
+            I1l111I11l += b' ' * (16 - len(I1l111I11l))
+        ll1II11Ill = I1l111I11l + llI1II1ll1 
+        Illl11II11.extend(ll1II11Ill)
+    l1lI1lI11I.close()
+    return Illl11II11.decode(encoding="ascii")
+weusfdiufs (resdfkjsdf (ereusodufyas() ))

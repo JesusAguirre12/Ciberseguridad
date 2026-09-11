@@ -1,7 +1,0 @@
-primero que nada en wireshark nos metemos al primer flujo http y comenzamos a revisar los streams de vuelta hasta que encontramos con algo que parece una flag en rot13
-
-luego ejecutamos 
-
-echo "cvpbPGS{c33xno00_1_f33_h_qrnqorrs}" | tr "A-Za-z" "N-ZA-Mn-za-m"
-
-picoCTF{p33kab00_1_s33_u_deadbeef}

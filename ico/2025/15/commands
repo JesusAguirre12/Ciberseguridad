@@ -1,0 +1,7 @@
+la cosa es darse cuenta que se envian puros textos encodeados en base64, no obstante hay que darnos cuenta que hay algunos caracteres que no corresponden, eso lo vemos con la captura, no hagan lo mismo que yo jsjjs perdi 
+tiempo por las malas
+
+este es el output del decoder de python por lo que ahi esta la flag
+
+['N2IgNGQgMzMgMzUg', 'MzUgNDAgNDcgMzMg', 'NWYgMzEgNmUg', 'NTAgNmMgMzEgMzQg', 'NmUgNWYgMzUgMzEg', 'NjcgNjggMzQgN2Q=']
+{M355@G3_1nPl14n_51gh4} 

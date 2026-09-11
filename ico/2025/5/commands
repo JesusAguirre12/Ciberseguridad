@@ -1,0 +1,38 @@
+A nosotros nos mencionan algo de el orden de las cartas por lo que lo primero que se nos viene a la mente es 
+
+7 10 3 9 5 9 5 K 6 K 6 6
+6 K 7 J 6 3 9 5 5 A 9 K
+7 9 8 2 6 K 9 4 6 K 6 6
+5 4 9 2 7 7 8 6 3 9 4 9
+
+Hay 13 cartas distintas en total 
+vigeneere no no tenemos una key implicita
+rot13 no tiene sentido
+
+por lo que podria ser un cambio de base 
+
+y nos damos cuenta que podria ser un base 13
+
+normalmente en ctf cuando tienes 13 caracteres distintos es cambio de base
+
+con 
+
+A:1 
+...2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+K:0
+
+pero no sabemos si K es 13 o 0 probando es siplemente 0  
+y nos dan un texto en base 64 que al decodearlo nos da la flag
+
+echo "e0JANTNfQzBudjNyNTEwbn0=" | base64 -d 
+{B@53_C0nv3r510n}    

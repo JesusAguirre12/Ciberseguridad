@@ -1,7 +1,0 @@
-hacemos
-
- unzip big-zip-files.zip  
- 
- grep -rni -e "pico" .
-
-flag = picoCTF{gr3p_15_m4g1c_ef8790dc}
