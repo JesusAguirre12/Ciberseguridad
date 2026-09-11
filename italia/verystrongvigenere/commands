@@ -1,0 +1,19 @@
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+vamos a recordar como era el cifrado de vigenere
+
+vemos que al decodificar flag con vigenere obtenemos algo como AOAO... y tienen mas o menos coherencia cuando lo extendemos asi que probemos el script
+de python a ver si es
+
+el cifrado de vigenere recordemos que es un cifrado similar al de caesar pero requiere de una llave y para la iesima letra le sumamos la posicion 
+comienza indexada en cero, de la iesima letra de la clave, y que en caso de que el string que queremos cifrar sea mas largo que la clave se va repitiendo
+ciclicamente la clave, ejemplo
+
+srting  BANANA
+clave   BABABA
+encoded 101010 -> esto es lo que le sumamos en el alfabeto a cada string
+result  CAOAOA
+
+fzau{ncn_isors_cviovw_pwcqoze}
+
+AOAOAOAOAOAOAOAOAOAOAOAOAOAOAO

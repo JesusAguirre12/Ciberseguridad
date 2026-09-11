@@ -1,0 +1,10 @@
+seguimos los pasos primero el get
+y necesitamos python requests
+revisar el archivo de python pq curl es poderoso pero no mantiene la sesion como tal
+desp de hacerlo con requests ojo tenemos que pasar como json las cosas, nos damos cuenta que la cookie siempre es un numero de 4 digitos
+asi que simplemente probamos todas las cookies hasta que demos con la valida 
+
+revisar sessioner.py 
+y register.py
+
+
