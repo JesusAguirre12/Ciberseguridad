@@ -1,0 +1,14 @@
+primero que nada ingresamos algo random en la contraseña y le damos a view source, vemos que hay algo que es secret.php
+aunque no podemos ingresar directamente 
+
+asi que al ver bien el src vemos que se usa stringcmp y si logramos que sea null con 0 va a devolver la flag
+
+enviamos este payload
+
+curl -X POST -d "password[]=1" "http://clogin.challs.olicyber.it"
+
+password[]=1 dice que tratame a lo siguiente como un array, y al comparar un array con un string devuelve null
+
+y nos da la flag 
+
+flag{strcmp_1s_n0t_s0_s4f3}
