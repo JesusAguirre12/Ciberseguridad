@@ -1,0 +1,35 @@
+primero que nada revisando vuln.c nos damos cuena que estamos pidiendo 128 caracteres para un buffer de 32 y con una funcion win esto es claramente explotacion binaria
+ahora vemos que esto es de 64 bits y en 64 bits es 32+8 caracteres y para arquitecturas de 32 bits son 32+4 caracteres
+
+nosoros queremos controlar el return adress y tenemos punteros que joden, miren mejor este grafiquito chulo
+
+[  Dirección de Retorno (EIP / RIP)  ]  <-- Lo que queremos controlar
+[  Saved Frame Pointer (EBP / RBP)   ]  <-- ¡El obstáculo! (+4 o +8 bytes)
+[          Buffer local (x)          ]  <-- Lo que rellenamos con 'A's
+
+ahi se ve bien verdad? asi que con file vuln vemos que arquitectura es para ver cuantos bytes usar 
+
+ademas si es arquitectura de x86 de 32bit necesitas 4 bytes, en arquitectura de 64 bit necesitas 8 bytes y tambien se puede hacer con pack de struct con pack("<I",dir) para 32 y usando <Q para 64
+y usamos .decode('latin1') para que se imprima el payload en nuestro caso
+
+--- PARA PRUEBA LOCAL 
+
+primero crea un flag.txt que tenga una flag fake
+
+para esto guarda little.py y haz lo siguiente
+
+python3 little.py > little.txt
+
+desp para el archivo vuln ya con permisos de ejecucion
+
+chmod +x ./vuln
+
+haces ./vuln < little.txt
+
+--- PRUEBA REAL
+
+y asi cargamos el payload en el programa
+
+nc mysterious-sea.picoctf.net 55495 < little.txt y obtenemos la flag, NOTA: chabon en vez de copypastear todo al menos pone el puerto correcto bro, es el de TU picoctf
+
+picoCTF{3ch0_s3rv1c3_br34k5_5f4859dd}

