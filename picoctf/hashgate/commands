@@ -1,0 +1,20 @@
+primero abrimos con ctrl+u y vemos que tenemos 
+
+guest@picoctf.org
+guest
+
+como email y pass asi que ingresamos con eso
+
+view-source:http://crystal-peak.picoctf.net:60301/profile/user/e93028bdc1aacdfb3687181f2031765d
+
+que sera esto, vemos que el id de el user es un hash, guest tiene id 3000 y el hash de 3000 es exactamente lo de user/e9... ese hash es el hash
+de 3000
+
+realmente ostia no nos pide logearnos ni pasar credenciales ni nada, y si revisamos las cookies no hay por lo que podriamos intentar un brute para decifrar la key
+el brute recibe un numero de 4 digitos 0001...9999 lo convierte a hash md5 y revisa el link
+
+ademas notamos que cuando el user es invalido recibimos la respuesta User not found.
+
+haciendo esto, utilizamos hilos de ejecucion para terminar la tarea en segundos y obtener la flag encontrada con id 3013
+
+picoCTF{id0r_unl0ck_69c48f4b}
