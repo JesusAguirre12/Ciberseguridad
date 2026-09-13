@@ -25,4 +25,4 @@ Realmente mi repo no tiene licencia específica, pero si van a copiar mi conteni
 Disculpen la falta de seriedad muchachos es que mi edad no ayuda mucho 😭🙏.
 
 Igual no se pueden quejar pq no van a ver writeups en español asi como el mío, pero si tienen sugerencias....
-se las guaran porque me importa un comino 😭🙏, na mentira diganmelas con gusto y yo veré si las tomo en cuenta o no. 
+se las guardan porque me importa un comino 😭🙏 (na bld mentira diganmelas con gusto y yo veré si las tomo en cuenta o no). 
