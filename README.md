@@ -6,7 +6,7 @@ A diferencia de los write-ups típicos que te dan el payload final directo, esta
 
 ---
 
-## 📁 Estructura
+## Estructura 😎
 
 El repo está organizado de la forma más sencilla posible, directamente por plataforma:
 
@@ -18,3 +18,11 @@ El repo está organizado de la forma más sencilla posible, directamente por pla
 └── portswigger/     # Labs de PortSwigger Academy
 ...
 ```
+Ademas mi repo contiene unos machetes que estan buenísimos si quieres ver teoría básica 🥹, aunque no me acuerdo que tan básicos estan pero bueno 🙄.
+
+Realmente mi repo no tiene licencia específica, pero si van a copiar mi contenido denme credito muchachos 🥺.
+
+Disculpen la falta de seriedad muchachos es que mi edad no ayuda mucho 😭🙏.
+
+Igual no se pueden quejar pq no van a ver writeups en español asi como el mío, pero si tienen sugerencias....
+se las guaran porque me importa un comino 😭🙏, na mentira diganmelas con gusto y yo veré si las tomo en cuenta o no. 
